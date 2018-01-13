@@ -1570,7 +1570,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND 
             <a href="presort.html">Presort</a>
             <a href="qsort.html">Sort</a>
             <a class="stay" href="finalQuestions2.html">Controls</a>
-            <a class="stay" href="postsort2.html">Postsort</a>
+            <a href="postsort2.html">Postsort</a>
         </nav>
 
     </div>
@@ -1653,7 +1653,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND 
                 localStorage.removeItem("responsePinkState1");
 
 
-                $('nav a:nth-child(6)').trigger('touchstart'); // go to next page
+                $('.stay').trigger('touchstart'); // go to next page                
+                // $('nav a:nth-child(6)').trigger('touchstart'); // go to next page
                 // alert("function call");
             }; // ****  End finish button touchstart ******
 
