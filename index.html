@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- apple viewport standalone -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="apple-touch-icon" sizes="76x76" href="images/touch-icon-ipad.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="images/touch-icon-ipad-retina.png">
+
+    <!-- iPad Non-Retina Portrait -->
+    <link rel="apple-touch-startup-image" media="(device-width: 768px) and (orientation: portrait)" href="images/apple-touch-startup-image-768x1004.png">
+    <!-- iPad Non-Retina Landscape -->
+    <link rel="apple-touch-startup-image" media="(device-width: 768px) and (orientation: landscape)" href="images/apple-touch-startup-image-748x1024.png">
+    <!-- iPad Retina Portrait -->
+    <link rel="apple-touch-startup-image" media="(device-width: 768px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)"
+        href="images/apple-touch-startup-image-1536x2008.png">
+    <!-- iPad Retina Landscape -->
+    <link rel="apple-touch-startup-image" media="(device-width: 768px)  and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)"
+        href="images/apple-touch-startup-image-1496x2048.png">
+
+    <!-- load libraries -->
+    <script type="text/javascript" src="iscroll-lite.js"></script>
+    <script type="text/javascript" src="jquery-1.10.2.min.js"></script>
+
+    <!-- initialize iscroll5  and page display fadeIn-->
+    <script type="text/javascript">
+        var myScroll;
+
+        function loaded() {
+            myScroll = new IScroll('#wrapper');
+        }
+        document.addEventListener('touchmove', function (e) {
+            e.preventDefault();
+        }, false);
+    </script>
+
+    <title>Ken-Q Mobile Client</title>
+
+    <style>
+        /*  *************** page specific styles*/
+
+        p {
+            font-family: Georgia;
+        }
+
+        #title {
+            display: block;
+            width: 100%;
+            font-size: 90px;
+            font-family: HelveticaNeue-CondensedBlack;
+            color: black;
+            text-align: left;
+            margin-left: 0px;
+        }
+
+        #catchPhrase {
+            float: left;
+            font-size: 25px;
+            color: red;
+            font-family: HelveticaNeue-BoldItalic;
+            font-style: oblique;
+            margin-left: 0px;
+            margin-top: -80px;
+        }
+
+        #infoText {
+            font-size: 24px;
+            margin-top: 10px;
+            margin-left: 2px;
+        }
+
+        #heroDiv {
+            width: 100%;
+            height: 250px;
+        }
+
+        #textBox {
+            position: relative;
+        }
+
+        #copyright {
+            position: absolute;
+            left: 30px;
+            font-family: HelveticaNeue-CondensedBlack;
+            margin-bottom: 20px;
+        }
+
+        .paraHeader {
+            color: black;
+            font-weight: bold;
+        }
+
+        #imageHolder {
+            margin-left: -35px;
+            height: 300px;
+            margin-bottom: 10px;
+        }
+
+        #imageHolder2 {
+            margin-left: -5px;
+            height: 300px;
+        }
+
+        div.horizontal {
+            display: inline-block;
+            margin-right: 1px;
+        }
+
+        div.horizontalLable {
+            display: inline-block;
+            width: 280px;
+        }
+
+        .horizontalLabelText {
+            margin-left: 63px;
+        }
+
+        .horizontalImage {
+            margin-left: 165px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        ol li .processList {
+            margin-bottom: 15px;
+        }
+
+        ul {
+            /*         border: 3px solid red;*/
+        }
+
+        img {
+            /*         border: 3px solid red;*/
+        }
+        /* *****************  end page specific styles*/
+
+        body {
+            /* On modern browsers, prevent the whole page to bounce */
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #wrapper {
+            position: relative;
+            margin-top: 20px;
+            height: 748px;
+            width: 1004px;
+            overflow: hidden;
+            margin-left: 10px;
+            /* Prevent native touch events on Windows */
+            -ms-touch-action: none;
+            /* Prevent the callout on tap-hold and text selection */
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            /* Prevent text resize on orientation change, useful for web-apps */
+            -webkit-text-size-adjust: none;
+            -moz-text-size-adjust: none;
+            -ms-text-size-adjust: none;
+            -o-text-size-adjust: none;
+            text-size-adjust: none;
+        }
+
+        #scroller {
+            position: absolute;
+            width: 100%;
+            margin-left: 0px;
+            /* Prevent elements to be highlighted on tap */
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            /* Put the scroller into the HW Compositing layer right from the start */
+            -webkit-transform: translateZ(0);
+            -moz-transform: translateZ(0);
+            -ms-transform: translateZ(0);
+            -o-transform: translateZ(0);
+            transform: translateZ(0);
+        }
+        /* Nav menu styling */
+
+        nav {
+            position: absolute;
+            bottom: 55px;
+            left: 640px;
+            border-spacing: 0px;
+            margin-top: 5px;
+        }
+
+        nav a {
+            padding: 15px 15px 15px 15px;
+            color: white;
+            letter-spacing: 1.75px;
+            font-size: 22px;
+            text-align: center;
+            background-color: #1985c5;
+            border-radius: 5px;
+
+            /* border-top-left-radius: 5px;
+            border-top-right-radius: 5px; */
+            border: 3px solid #1985c5;
+            margin-right: -4px;
+            margin-left: -4px;
+            text-decoration: none;
+        }
+
+        nav a.selected {
+            background-color: white;
+            color: #1985c5;
+        }
+
+        a {
+            color: #2d343c;
+            text-align: center;
+            font-weight: bold;
+            font-family: HelveticaNeue-CondensedBlack;
+        }
+
+        input[type=text],
+        select {
+            width: 500px;
+            font-size: 18px;
+            padding: 12px 20px;
+            margin: 8px 0;
+            margin-left: 10px;
+            display: inline-block;
+            border: 3px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        #nameDiv {
+            display: flex;
+        }
+        /* changes the color of the a links */
+        /*
+        
+        #delayContainer {
+            display: none
+        }
+*/
+    </style>
+
+
+</head>
+
+<body onload="loaded()">
+    <div id="notAnIpad"></div>
+    <div id="delayContainer">
+
+        <div id="wrapper">
+            <!--container for iscroll5 -->
+            <div id="scroller">
+                <div id="textBox">
+
+                    <div id="heroDiv">
+
+                        <div>
+                            <h1 id="title">How can we attract more students to Kobe College?</h1>
+                        </div>
+
+                    </div>
+                    <!-- end hero div -->
+
+
+
+                    <div id="infoText">
+
+                        <span></span>
+
+                        <h2>Thank you for agreeing to take this survey!</h2>
+
+
+                        <br>
+                        <br>
+                        <div id="nameDiv">
+                            <p>Please enter your name:</p>
+                            <input type="text" id="participantName">
+                        </div>
+                    </div>
+                    <!--end infotext div -->
+                </div>
+                <!--end textbox div -->
+            </div>
+            <!--end scroller for iscroll5 -->
+        </div>
+        <!--end wrapper for iscroll5-->
+
+        <div id="navDiv">
+            <nav>
+                <a href="presort2.html" class="stay">Begin Survey</a>
+            </nav>
+        </div>
+    </div>
+    <!-- end fadeIn div -->
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#navDiv").hide();
+
+            localStorage.setItem("state1", "We should raise TOEIC scores of current students");
+            localStorage.setItem("state2", "We should increase TV advertisements");
+            localStorage.setItem("state3", "We should increase advertisements on rail lines");
+            localStorage.setItem("state4", "We should further develop our YouTube channel");
+            localStorage.setItem("state5", "We should increase high school visits");
+            localStorage.setItem("state6", "We should increase the number of open campus days");
+            localStorage.setItem("state7", "We should change the style of the KC web page");
+            localStorage.setItem("state8", "We should create a new Department of Nursing");
+            localStorage.setItem("state9", "We should try to attract more foreign students");
+            localStorage.setItem("state10", "We should build more dormitories for students");
+            localStorage.setItem("state11", "We should build a dormitory for foreign students");
+            localStorage.setItem("state12", "We should increase the number of entrance exams");
+            localStorage.setItem("state13", "We should expand our twitter presence");
+            localStorage.setItem("state14", "We should strengthen our brand image");
+            localStorage.setItem("state15", "We should develop a new marketing strategy");
+            localStorage.setItem("state16", "We should use more technology in our classes");
+            localStorage.setItem("state17", "We should build an escalator from the main gate to campus");
+            localStorage.setItem("state18", "We should develop on-line classes");
+            localStorage.setItem("state19", "We should require all students to study abroad");
+            localStorage.setItem("state20", "We should expand the graduate program");
+            localStorage.setItem("state21", "We should increase the number of foreign visiting scholars");
+            localStorage.setItem("state22", "We should change to a quarter system instead of semesters");
+            localStorage.setItem("state23", "We should have classes that meet two or three times a week");
+            localStorage.setItem("state24", "We should have some instructors that live on campus");
+            localStorage.setItem("state25", "We should raise the retirement age for faculty to 70");
+            localStorage.setItem("state26", "We should create a service learning program");
+            localStorage.setItem("state27", "We should develop closer ties with local businesses");
+            localStorage.setItem("state28", "We should invite more local people to give lectures on campus");
+            localStorage.setItem("state29", "We should change the academic year (start in August, end in May");
+            localStorage.setItem("state30", "We should remodel the cafeteria");
+
+
+            // Check to see if visitor is using an iPad
+            // checkDevice();
+
+            $("#participantName").on("input", function (e) {
+                var name = e.target.value;
+                console.log(name.length);
+                localStorage.setItem("participantName", name);
+                if (name.length > 0) {
+                    $("#navDiv").show();
+                }
+            });
+
+
+            // Check to see if Web App is saved to Homescreen
+            function checkDevice() {
+                var isiPad = navigator.userAgent.match(/iPad/i) != null;
+                console.log(isiPad);
+                if (isiPad === true) {
+                    checkiPadStandAlone();
+                } else {
+                    $('#delayContainer').css('display', 'none');
+                    $('#notAnIpad').css('background-color', '#fff').append(
+                        '<a href="mailto:?subject=Install%20Ken-Q%20Mobile%20on%20your%20iPad&amp;body=Add%20this%20Web%20Application%20to%20your%20iPad%20by%20visiting:%20http://www.banasick.net/ken-qmobile07/information.html"><img src="images/non_ipad_message.png"/></a>'
+                    );
+                    $("#notAnIpad").fadeIn(500);
+                }
+            };
+
+            function checkiPadStandAlone() {
+                if (window.navigator.standalone == false) {
+                    $('#delayContainer').css('display', 'none');
+                    $('#notAnIpad').css('background-color', '#fff').append(
+                        '<img  src="images/add_to_homescreen.png"/>');
+                    $("#notAnIpad").fadeIn(500);
+                } else {
+                    $("#delayContainer").fadeIn(500);
+                };
+            };
+
+
+
+
+            // stay standalone
+            //https://github.com/mrmoses/jQuery.stayInWebApp
+            (function ($) {
+                $.extend({
+                    stayInWebApp: function (b) {
+                        "standalone" in window.navigator && window.navigator.standalone && (b ||
+                            (b = "a"), $("body").delegate(b, "touchstart", function (b) {
+                                if ($(this).attr("target") == void 0 || $(this).attr(
+                                        "target") == "" || $(this).attr("target") ==
+                                    "_self") {
+                                    var c = $(this).attr("href");
+                                    if (!c.match(/^http(s?)/g)) b.preventDefault(),
+                                        self.location = c
+                                }
+                            }))
+                    }
+                })
+            })(jQuery);
+            $(function () {
+                $.stayInWebApp('a.stay');
+            });
+            // This use only links with the class stay.
+            // $(function() { $.stayInWebApp('a.stay');});
+            // end stay standalone
+        });
+    </script>
+
+    <script>
+    </script>
+
+</body>
+
+</html>
